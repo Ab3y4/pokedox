@@ -32,14 +32,36 @@ class _HomeScreenState extends State<HomeScreen> {
         pokedex = decodedJasonData['pokemon'];
       }
       setState(() {});
-      print(pokedex![0]);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.red,
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          pokedex?.length == null
+              ? const Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.red,
+                  ),
+                )
+              : Expanded(
+                  child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2, childAspectRatio: 1.4),
+                    itemCount: pokedex!.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        child: Text(pokedex![index]['name']),
+                      );
+                    },
+                  ),
+                )
+        ],
+      ),
     );
   }
 }
