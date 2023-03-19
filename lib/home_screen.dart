@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Color backgroundColor = Colors.yellow;
                           return backgroundColor;
                         } else if (type == 'Bug') {
-                          Color backgroundColor = Colors.green.shade900;
+                          Color backgroundColor = Colors.green.shade700;
                           return backgroundColor;
                         } else if (type == 'Normal') {
                           Color backgroundColor = const Color(0xFFC998A7);
