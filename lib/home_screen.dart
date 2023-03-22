@@ -153,7 +153,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                 onTap: () {
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: (_) {
-                                    return DetailScreen();
+                                    return DetailScreen(
+                                      title: pokedex![index]['name'],
+                                      img: pokedex![index]['img'],
+                                      type: pokedex![index]['type'],
+                                      color: backgroundColor(),
+                                    );
                                   }));
                                 },
                                 child: Card(
