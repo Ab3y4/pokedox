@@ -12,8 +12,6 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-const String pokeApi =
-    'https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json';
 List? pokedex;
 const String title = 'Pokemon';
 bool isDakModeOn = false;
@@ -41,6 +39,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
     return MaterialApp(
       theme: ThemeData(
           brightness:
@@ -86,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Positioned(
               top: 130,
               bottom: 0,
-              width: MediaQuery.of(context).size.width,
+              width: width,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -152,12 +152,18 @@ class _HomeScreenState extends State<HomeScreen> {
                               return GestureDetector(
                                 onTap: () {
                                   Navigator.push(context,
-                                      MaterialPageRoute(builder: (_) {
+                                      MaterialPageRoute(builder: (context) {
                                     return DetailScreen(
                                       title: pokedex![index]['name'],
                                       img: pokedex![index]['img'],
                                       type: pokedex![index]['type'],
                                       color: backgroundColor(),
+                                      pHeight: pokedex![index]['height'],
+                                      pWeight: pokedex![index]['weight'],
+                                      spawnTime: pokedex![index]['spawn_time'],
+                                      candy: pokedex![index]['candy'],
+                                      egg: pokedex![index]['egg'],
+                                      isDarkModeon: isDakModeOn,
                                     );
                                   }));
                                 },
@@ -211,10 +217,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                       Positioned(
                                         bottom: 5,
                                         right: 5,
-                                        child: CachedNetworkImage(
-                                            height: 100,
-                                            fit: BoxFit.fitHeight,
-                                            imageUrl: pokedex![index]['img']),
+                                        child: Hero(
+                                          tag: pokedex![index]['name'],
+                                          child: CachedNetworkImage(
+                                              height: 100,
+                                              fit: BoxFit.fitHeight,
+                                              imageUrl: pokedex![index]['img']),
+                                        ),
                                       ),
                                     ],
                                   ),
