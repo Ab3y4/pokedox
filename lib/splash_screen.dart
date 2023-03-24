@@ -39,21 +39,6 @@ class _SplashScreenState extends State<SplashScreen> {
                       height: 300, fit: BoxFit.fill, width: 300),
                 ),
               ),
-              // Positioned(
-              //   top: 270,
-              //   child: AnimatedTextKit(
-              //     totalRepeatCount: 1,
-              //     animatedTexts: [
-              //       FadeAnimatedText('Pokemon',
-              //           textStyle: const TextStyle(
-              //               fontSize: 50, fontWeight: FontWeight.bold)),
-              //       FadeAnimatedText("Gotta Catch 'Em All!",
-              //           textAlign: TextAlign.center,
-              //           textStyle: const TextStyle(
-              //               fontSize: 40, fontWeight: FontWeight.bold))
-              //     ],
-              //   ),
-              // )
             ],
           )
         ],
